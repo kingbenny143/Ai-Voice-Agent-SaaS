@@ -12,10 +12,6 @@ An AI-powered Voice Agent SaaS platform that enables businesses to automate cust
 
 ---
 
-**Test note for push verification**
-
----
-
 ## 🚀 Overview
 
 AI Voice Agent SaaS helps businesses deploy AI voice assistants capable of:
