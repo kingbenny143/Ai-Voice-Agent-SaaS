@@ -1,0 +1,162 @@
+GIT & GITHUB WORKFLOW REFERENCE GUIDE
+====================================
+
+1. INITIAL SETUP & CONFIGURATION
+================================
+
+1.1 Configure Git User Credentials
+----------------------------------
+Set your name and email (required for commits):
+    git config --global user.name "Your Full Name"
+    git config --global user.email "your.email@example.com"
+
+Verify configuration:
+    git config --list
+
+
+2. INITIALIZE A NEW REPOSITORY
+==============================
+
+2.1 Create a New Local Repository
+---------------------------------
+Navigate to your project folder, then run:
+    git init
+
+(This creates a hidden .git directory for version control)
+
+
+3. STAGING & COMMITTING CHANGES
+================================
+
+3.1 Check Status of Changes
+---------------------------
+See which files have been modified, staged, or untracked:
+    git status
+
+3.2 Stage Files for Commit
+--------------------------
+Stage a specific file:
+    git add filename.txt
+
+Stage all modified and untracked files:
+    git add -A
+    OR
+    git add .
+
+3.3 Commit Staged Changes
+-------------------------
+Commit with a meaningful message:
+    git commit -m "Brief, descriptive message about changes"
+
+Best Practice: Write commit messages in present tense, e.g., "Add user authentication feature"
+
+3.4 View Commit History
+-----------------------
+See all commits:
+    git log
+
+See simplified commit history (one line per commit):
+    git log --oneline
+
+See history with graph and branch info:
+    git log --graph --oneline --all
+
+
+4. LINK TO GITHUB REPOSITORY
+=============================
+
+4.1 Add Remote Repository
+-------------------------
+Link your local repo to a GitHub repo:
+    git remote add origin https://github.com/your-username/your-repo-name.git
+
+Verify remote is set:
+    git remote -v
+
+4.2 Push to GitHub (First Time)
+-------------------------------
+Push commits to main branch and set upstream:
+    git push -u origin main
+    (OR git push -u origin master, depending on your default branch name)
+
+For subsequent pushes:
+    git push
+
+
+5. SYNCHRONIZE WITH REMOTE
+===========================
+
+5.1 Pull Latest Changes
+-----------------------
+Always pull before pushing to avoid conflicts!
+    git pull origin main
+
+This fetches and merges remote changes into your local branch.
+
+
+6. BRANCHING WORKFLOW
+======================
+
+6.1 Create a New Branch
+-----------------------
+Create and switch to a feature branch:
+    git checkout -b feature/your-feature-name
+    OR (Git 2.23+)
+    git switch -c feature/your-feature-name
+
+6.2 Switch Between Branches
+---------------------------
+Switch to an existing branch:
+    git checkout main
+    OR (Git 2.23+)
+    git switch main
+
+6.3 List All Branches
+---------------------
+See local branches:
+    git branch
+
+See all branches (local and remote):
+    git branch -a
+
+6.4 Merge a Branch
+------------------
+First switch to the target branch (e.g., main):
+    git checkout main
+
+Then merge your feature branch:
+    git merge feature/your-feature-name
+
+6.5 Delete a Branch
+-------------------
+Delete a local branch after merging:
+    git branch -d feature/your-feature-name
+
+
+7. FORCE PUSH (USE WITH EXTREME CAUTION!)
+==========================================
+
+7.1 When to Use
+---------------
+Only use force push if you've rewritten history (e.g., rebase) and are certain no one else is working on the branch.
+
+7.2 Safe Force Push
+-------------------
+Force push with lease (safer, fails if remote has new changes):
+    git push --force-with-lease origin your-branch-name
+
+7.3 Dangerous Force Push
+------------------------
+Never use this on shared branches!
+    git push --force origin your-branch-name
+
+WARNING: Force push overwrites remote history and can erase other people's work.
+
+
+BEST PRACTICES
+==============
+- Always run git status and git diff before committing
+- Write clear, meaningful commit messages
+- Pull remote changes BEFORE pushing
+- Use feature branches for new work
+- Never force push to main/master or shared branches

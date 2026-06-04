@@ -59,6 +59,3 @@ database/backups/
 # Temporary files
 *.tmp
 *.temp
-
-
-gitcommand.txt
