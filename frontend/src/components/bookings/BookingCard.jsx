@@ -8,6 +8,8 @@ const BookingCard = () => {
       BookingCard
     </div>
   )
+
 }
+
 
 export default BookingCard
