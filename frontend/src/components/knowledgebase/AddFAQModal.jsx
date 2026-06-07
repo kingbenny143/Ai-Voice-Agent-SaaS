@@ -23,7 +23,7 @@ const AddFAQModal = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        <FAQForm />
+        <FAQForm onSubmit={onSubmit} /> 
 
       </div>
 
