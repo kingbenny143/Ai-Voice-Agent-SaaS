@@ -13,7 +13,7 @@ import KnowledgeBasePage from "../pages/dashboard/KnowledgeBasePage";
 import AiSettingsPage from "../pages/dashboard/AISettingsPage";
 import AnalyticsPage from "../pages/dashboard/AnalyticsPage";
 import BillingPage from "../pages/dashboard/BillingPage";
-
+import BookingForm from "../components/bookings/BookingForm";
 
 function AppRoutes() {
   return (
@@ -25,6 +25,8 @@ function AppRoutes() {
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/calls" element={<CallsPage />} />
+        <Route path="/bookings" element={<BookingsPage />} />
+        <Route path="/bookings/new" element={<BookingForm />} />
         <Route path="/bookings" element={<BookingsPage />} />
         <Route path="/knowledge-base" element={<KnowledgeBasePage />} />
         <Route path="/ai-settings" element={<AiSettingsPage />} />

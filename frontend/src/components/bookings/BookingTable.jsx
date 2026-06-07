@@ -1,6 +1,7 @@
 // BookingTable component for displaying all bookings
 import { useState } from "react";
 import BookingRow from "./BookingRow";
+import BookingModal from "./BookingModal";
 
 const BookingTable = ({ bookings }) => {
 
@@ -32,10 +33,14 @@ const BookingTable = ({ bookings }) => {
                 key={booking.id}
                 booking={booking}
                 onView={setSelectedBooking}
-                onClose={setCloseModal}
               />
             ))}
           </tbody>
+
+          <BookingModal
+            booking={selectedBooking}
+            onClose={() => setSelectedBooking(null)}
+          />
         </table>
       </div>
     </div>

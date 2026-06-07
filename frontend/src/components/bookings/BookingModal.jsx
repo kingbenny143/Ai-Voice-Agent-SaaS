@@ -1,30 +1,37 @@
 // BookingModal component for displaying booking form in a modal
 
 const BookingModal = ({ booking, onClose }) => {
+  if (!booking) return null;
+
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-      <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto" id="right">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+      <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-lg">
 
         <h2 className="text-2xl font-bold mb-4">
           Booking Details
         </h2>
 
         <div className="space-y-3">
+
           <p>
             <strong>Customer:</strong> {booking.customer}
           </p>
 
           <p>
-            <strong>Phone:</strong> {booking.phone}
+            <strong>Booking Type:</strong> {booking.bookingType}
           </p>
 
           <p>
-            <strong>Duration:</strong> {booking.duration}
+            <strong>Date:</strong> {booking.date}
           </p>
 
           <p>
             <strong>Status:</strong> {booking.status}
           </p>
+
+          
+
         </div>
 
         <button
@@ -35,8 +42,9 @@ const BookingModal = ({ booking, onClose }) => {
         </button>
 
       </div>
-    </div>
-  )
-}
 
-export default BookingModal
+    </div>
+  );
+};
+
+export default BookingModal;
