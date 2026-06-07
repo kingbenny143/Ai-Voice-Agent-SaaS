@@ -1,3 +1,12 @@
+/* tailwindcss */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+/* css files */
+@import "./styles/globals.css";
+@import "./styles/variables.css";
+@import "./styles/auth.css";
+@import "./styles/dashboard.css";
+@import "./styles/landing.css";
