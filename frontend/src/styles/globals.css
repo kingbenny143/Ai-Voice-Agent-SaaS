@@ -1,1 +1,4 @@
 /* globals.css - Global styles for the application */
+*::-webkit-scrollbar{
+    display: none;
+}
