@@ -3,19 +3,34 @@ import { Link } from "react-router-dom";
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
 
-    if (!email) {
-      alert("Please enter your email");
-      return;
-    }
+  const handleForgotPassword = (e) => {
+  e.preventDefault();
 
-    console.log("Reset link sent to:", email);
+  if (!email) {
+    alert("Email is required");
+    return;
+  }
 
-    alert("Password reset link sent!");
-  };
+  if (!email.includes("@")) {
+    alert("Enter a valid email");
+    return;
+  }
+
+  setLoading(true);
+
+  setTimeout(() => {
+    setSuccess(
+      "Password reset link sent to your email"
+    );
+
+    setLoading(false);
+  }, 1000);
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100">
@@ -30,7 +45,7 @@ const ForgotPasswordPage = () => {
         </p>
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleForgotPassword}
           className="flex flex-col gap-4"
         >
           <input

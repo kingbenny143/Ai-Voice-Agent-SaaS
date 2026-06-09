@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const formHandling = (e) => {
+  const navigate = useNavigate();
+
+
+  const handleLogin = (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -12,9 +18,25 @@ const LoginPage = () => {
       return;
     }
 
-    console.log("Form Submitted");
-    console.log(email);
-    console.log(password);
+    if(!email.includes("@")){
+      alert("Please enter a valid email");
+      return;
+    }
+
+    if(password.length < 8 ){
+      alert("Password must be at least 8 characters long");
+      return;
+    }
+
+  console.log(email, password);
+
+  setLoading(true);
+
+  setTimeout(() => {
+    navigate("/dashboard");
+    setLoading(false);
+  }, 1000);
+
   };
 
   return (
@@ -26,7 +48,7 @@ const LoginPage = () => {
         </h1>
 
         <form
-          onSubmit={formHandling}
+          onSubmit={handleLogin}
           className="flex flex-col gap-4"
         >
           <input
@@ -71,6 +93,7 @@ const LoginPage = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="
               bg-blue-600
               text-white
@@ -79,19 +102,28 @@ const LoginPage = () => {
               font-semibold
               hover:bg-blue-700
               transition
+              disabled:bg-gray-400
             "
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        <div className="mt-4 text-center">
-          <a
-            href="/forgot-password"
+        <div className="mt-4 text-center flex justify-between">
+          <Link
+            to="/forgot-password"
             className="text-blue-600 hover:underline"
           >
             Forgot Password?
-        </a>
+          </Link>
+
+          <Link
+            to="/signup"
+            className="text-blue-600 hover:underline"
+          >
+            Sign Up?
+          </Link>
+
         </div>
 
       </div>
